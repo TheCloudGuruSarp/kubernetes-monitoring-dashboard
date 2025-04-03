@@ -12,7 +12,7 @@ A comprehensive monitoring solution for Kubernetes clusters using Prometheus, Gr
 
 ## Architecture
 
-![Architecture](./docs/architecture.png)
+The architecture consists of Prometheus for metrics collection, Grafana for visualization, and Loki for log aggregation, all deployed on a Kubernetes cluster.
 
 ## Components
 
