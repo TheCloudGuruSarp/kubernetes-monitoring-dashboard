@@ -6,6 +6,11 @@ A comprehensive monitoring solution for Kubernetes clusters using Prometheus, Gr
 
 ---
 
+![DevOps Pipeline](https://img.shields.io/badge/DevOps-Pipeline-blue)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Ready-brightgreen)
+![Terraform](https://img.shields.io/badge/Infrastructure-Terraform-purple)
+![Monitoring](https://img.shields.io/badge/Monitoring-Prometheus-orange)
+
 ## Features
 
 - Real-time monitoring of Kubernetes resources
