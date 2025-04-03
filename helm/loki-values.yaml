@@ -1,0 +1,53 @@
+# Custom values for Loki Stack
+
+loki:
+  persistence:
+    enabled: true
+    size: 50Gi
+  config:
+    schema_config:
+      configs:
+        - from: 2020-10-24
+          store: boltdb-shipper
+          object_store: filesystem
+          schema: v11
+          index:
+            prefix: index_
+            period: 24h
+    storage_config:
+      boltdb_shipper:
+        active_index_directory: /data/loki/index
+        cache_location: /data/loki/index_cache
+        cache_ttl: 24h
+        shared_store: filesystem
+      filesystem:
+        directory: /data/loki/chunks
+    limits_config:
+      enforce_metric_name: false
+      reject_old_samples: true
+      reject_old_samples_max_age: 168h
+      ingestion_rate_mb: 16
+      ingestion_burst_size_mb: 32
+
+promtail:
+  config:
+    snippets:
+      pipelineStages:
+        - docker: {}
+        - cri: {}
+        - match:
+            selector: '{app=~".+"} |~ "(error|Error|ERROR)"'
+            stages:
+              - metrics:
+                  error_total:
+                    type: Counter
+                    description: "Total number of error logs"
+                    source: log
+                    config:
+                      action: inc
+
+grafana:
+  enabled: false  # We're using the Grafana from Prometheus stack
+
+prometheus:
+  enabled: false  # We're using the Prometheus from Prometheus stack
