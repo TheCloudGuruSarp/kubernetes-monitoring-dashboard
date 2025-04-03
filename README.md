@@ -2,6 +2,10 @@
 
 A comprehensive monitoring solution for Kubernetes clusters using Prometheus, Grafana, and Loki.
 
+## ✨ Developed by Sarper ✨
+
+---
+
 ## Features
 
 - Real-time monitoring of Kubernetes resources
